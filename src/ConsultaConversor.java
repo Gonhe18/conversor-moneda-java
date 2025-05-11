@@ -6,16 +6,13 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ConsultaConversor {
-
-        private double valorConversion = 0;
-
         public ConversorMoneda solicitarConversionMoneda(String moneda){
-            URI direccion = URI.create("https://v6.exchangerate-api.com/v6/6d13fd38e9c26a14c0c0ac65/latest/"+moneda);
+            URI url = URI.create("https://v6.exchangerate-api.com/v6/6d13fd38e9c26a14c0c0ac65/latest/"+moneda);
 
 
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(direccion)
+                    .uri(url)
                     .build();
 
             try {
@@ -34,9 +31,7 @@ public class ConsultaConversor {
 
         double monedaConvertida = valorMoneda * cantidadAConvertir;
 
-        String respuesta = "El valor de " + cantidadAConvertir + " [" + monedaConsultada + "] corresponde al valor final de =>> " +
+        return "El valor de " + cantidadAConvertir + " [" + monedaConsultada + "] corresponde al valor final de =>> " +
                 monedaConvertida + "[" + monedaRespuesta + "]";
-
-        return respuesta;
     }
 }

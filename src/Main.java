@@ -6,6 +6,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
 
+        ConversorMoneda solicitarConversion;
+        double valorMoneda;
+        String conversionExitosa;
+
         int opcion = 0;
 
         String menu = """
@@ -39,10 +43,10 @@ public class Main {
                     System.out.println(solicitudValor);
                     cantidad = teclado.nextDouble();
 
-                    ConversorMoneda solicitarConversion = consulta.solicitarConversionMoneda("USD");
-                    double valorMoneda = solicitarConversion.conversion_rates().get("ARS");
+                    solicitarConversion = consulta.solicitarConversionMoneda("USD");
+                    valorMoneda = solicitarConversion.conversion_rates().get("ARS");
 
-                    String conversionExitosa = consulta.conversionMoneda("USD",
+                    conversionExitosa = consulta.conversionMoneda("USD",
                             "ARS",
                             cantidad,
                             valorMoneda);
